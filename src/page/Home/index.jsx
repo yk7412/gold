@@ -1,9 +1,10 @@
 import { useEffect } from "react"
 import { getHidtoryToday } from "../../config/api"
 import {getList} from '@/config/api'
+// import '@/config'
 
 const Home = () => {
-    console.log(process.env.NODE_ENV, 'env')
+    console.log(process.env.NODE_ENV, process.env.REACT_APP_TEST_ENV, 'env')
     useEffect(() => {
         console.log(11111)
         getHidtoryToday().then(res => {
