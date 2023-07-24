@@ -1,9 +1,9 @@
 import HTTP from '../utils/http'
 import url from './url'
 
-const publicFn = async () => {
+const publicFn = (response) => {
     try {
-        return await HTTP.get(url.tenapi.getHidtoryToday)
+        return response
     } catch (error) {
         return {
             code: 40000,
@@ -14,7 +14,7 @@ const publicFn = async () => {
 }
 
 /** 获取历史上的今天 */
-export const getHidtoryToday = async () => {
+export const getHidtoryToday = () => {
     return publicFn(HTTP.get(url.tenapi.getHidtoryToday))
 }
 

@@ -1,6 +1,9 @@
 import { useEffect } from "react"
 import { getHidtoryToday } from "../../config/api"
 import {getList} from '@/config/api'
+// import style from './index.less'
+import './index.less'
+// import style from './index.less'
 // import '@/config'
 
 const Home = () => {
@@ -14,8 +17,12 @@ const Home = () => {
         //     console.log(res,'22222222')
         // })
     },[])
-    return <div>
+    // return <div className={style.Home} >
+    return <div className={'Home'} >
         首页
+        <div className="box">
+            盒子
+        </div>
     </div>
 }
 
