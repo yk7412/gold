@@ -1,0 +1,20 @@
+@import '../../style/public.less';
+
+.headers {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: @defaultBackgroundColor;
+    border-radius: @defaultBorderRadius;
+
+    content {
+        .ant-menu {
+            border-bottom: none;
+            .ant-menu-item {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
+}

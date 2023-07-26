@@ -13,6 +13,16 @@ const publicFn = (response) => {
     }
 }
 
+/** 获取文章列表 */
+export const getArticleList = () => {
+    return publicFn(HTTP.get(url.api.getArticeList))
+}
+
+/** 获取文章详情 */
+export const getArticleDetail = () => {
+    return publicFn(HTTP.get(url.api.getArticleDetail))
+}
+
 /** 获取历史上的今天 */
 export const getHidtoryToday = () => {
     return publicFn(HTTP.get(url.tenapi.getHidtoryToday))

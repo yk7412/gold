@@ -1,28 +1,26 @@
 import React from 'react'
-import { Menu } from 'antd'
 import {Routes, Route} from 'react-router-dom'
 import Home from '../Home'
+import Headers from '@/components/Headers'
+import { menuList } from '@/config/menuList'
+import './index.less'
 
 const Box = () => {
 
-    const menuList = [
-        { label: '首页', key: 'home' },
-        { label: '热门', key: 'hot' },
-        { label: '技术', key: 'technology' },
-        { label: '生活', key: 'life' },
-    ]
-
     return (
-        <div className="Box">
+        <div className="box">
             <header>
-                <Menu mode="horizontal" items={menuList} />
+                <Headers />
             </header>
             <main>
                 <Routes>
-                    <Route path='/' element={<Home/>} />
+                    {
+                        menuList.map(item => {
+                           return <Route path={item.key} element={item.component} />
+                        })
+                    }
                 </Routes>
             </main>
-            <footer></footer>
         </div>
     );
 }

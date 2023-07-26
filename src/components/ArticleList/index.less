@@ -1,0 +1,50 @@
+@import '../../style/public.less';
+
+.articleList {
+    background-color: #FFF;
+    padding: @defaultMargin;
+    .ant-list {
+        .item {
+            height: 120px;
+            padding: @defaultMargin;
+            cursor: pointer;
+            &:hover {
+                background-color: @lightGray;
+            }
+            header {
+                .name {
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+                .divisionLine {
+                    display: inline-block;
+                    width: 1px;
+                    height: 13px;
+                    background-color: @tooLoghtGray;
+                    margin: 0 6px;
+                }
+                .time {
+                    // margin-left: 10px;
+                    color: @grey
+                }
+            }
+            content {
+                .title {
+                    font-size: @titleSize;
+                    font-weight: bold;
+                }
+                .content {
+                    color: @grey;
+                }
+            }
+            footer {
+                .like, .reply {
+                    &:hover {
+                        color: @blue
+                    }
+                }
+            }
+        }
+    }
+}
