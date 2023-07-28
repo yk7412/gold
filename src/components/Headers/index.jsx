@@ -1,4 +1,4 @@
-import { Input, Menu } from 'antd'
+import { Button, Input, Menu } from 'antd'
 import { menuList } from '@/config/menuList'
 import {useNavigate} from 'react-router-dom'
 import './index.less'
@@ -35,6 +35,9 @@ const Headers = () => {
         </content>
         <div className="search">
             <Input.Search onSearch={onSearch} />
+        </div>
+        <div className="btn">
+            <Button type='primary' onClick={() => navigate('/article/create')} >写文章</Button>
         </div>
         <div className="user"></div>
     </div>
