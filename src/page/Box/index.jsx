@@ -4,6 +4,7 @@ import Home from '../Home'
 import Headers from '@/components/Headers'
 import { menuList } from '@/config/menuList'
 import './index.less'
+import NoPage from '../404'
 
 const Box = () => {
 
@@ -19,6 +20,7 @@ const Box = () => {
                            return <Route path={item.key} element={item.component} />
                         })
                     }
+                    <Route path='*' element={<NoPage />} />
                 </Routes>
             </main>
         </div>

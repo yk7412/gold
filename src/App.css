@@ -2,3 +2,9 @@
     height: 100%;
     background-color: #f4f4f4;
 }
+
+.pageBox {
+    height: 100%;
+    background-color: #FFF;
+    border-radius: 4px;
+}

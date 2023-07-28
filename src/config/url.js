@@ -3,7 +3,9 @@ const api = {
     /** 获取文章列表 */
     getArticeList: '/article/list',
     /** 获取文章详情 */
-    getArticleDetail: '/article/detail'
+    getArticleDetail: '/article/detail',
+    /** 新建文章 */
+    getArticleCreate: '/article/create',
 }
 
 
@@ -16,7 +18,7 @@ const publicFn = (baseUrl, obj) => {
     Object.keys(obj).forEach(key => {
         obj[key] = baseUrl + obj[key]
         if(baseUrl === 'http://localhost:3000') {
-            obj[key] = ''
+            obj[key] = 'https://tenapi.cn' + '/v2/history'
         }
     })
     return obj
