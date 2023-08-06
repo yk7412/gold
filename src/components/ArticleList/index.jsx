@@ -1,5 +1,6 @@
 import { List } from "antd"
 import {CommentOutlined, DislikeOutlined, EyeOutlined} from '@ant-design/icons'
+import moment from 'moment'
 import './index.less'
 
 const ArticleList = ({
@@ -37,9 +38,9 @@ const ArticleList = ({
             renderItem={item => {
                 return <div className="item" onClick={() => itemCallback(item)} >
                     <header>
-                        <span className="name" onClick={(event) => userCallback(item, event)}>{item.name}</span>
+                        <span className="name" onClick={(event) => userCallback(item, event)}>{item.ownerName}</span>
                         <span className="divisionLine"></span>
-                        <span className="time">{item.time}</span>
+                        <span className="time">{moment(item.createTime).format('YYYY-MM-DD')}</span>
                     </header>
                     <content>
                         <div className="title" title={item.title} >{item.title}</div>

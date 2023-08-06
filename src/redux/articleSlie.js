@@ -3,15 +3,19 @@ import {createSlice} from '@reduxjs/toolkit'
 export const articleSlice = createSlice({
     name: 'article',
     initialState: {
-        list: []
+        list: [],
+        userInfo: {}
     },
     reducers: {
-        getArticleListReducer: (state, action) => {
+        setArticleListReducer: (state, action) => {
             state.list = action.payload
+        },
+        setUserInfoReducer: (state, action) => {
+            state.userInfo = action.payload
         }
     }
 })
 
-export const { getArticleListReducer } = articleSlice.actions
+export const { setArticleListReducer, setUserInfoReducer } = articleSlice.actions
 
 export default articleSlice.reducer

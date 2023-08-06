@@ -6,6 +6,10 @@ const api = {
     getArticleDetail: '/article/detail',
     /** 新建文章 */
     getArticleCreate: '/article/create',
+    /** 注册 */
+    register: '/user/register',
+    /** 登录 */
+    login: '/user/login',
 }
 
 
@@ -17,14 +21,14 @@ const tenapi = {
 const publicFn = (baseUrl, obj) => {
     Object.keys(obj).forEach(key => {
         obj[key] = baseUrl + obj[key]
-        if(baseUrl === 'http://localhost:3000') {
-            obj[key] = 'https://tenapi.cn' + '/v2/history'
-        }
+        // if(baseUrl === 'http://localhost:3000') {
+        //     obj[key] = 'https://tenapi.cn' + '/v2/history'
+        // }
     })
     return obj
 }
 
 export default {
     tenapi: publicFn('https://tenapi.cn', tenapi),
-    api: publicFn('http://localhost:3000', api)
+    api: publicFn('http://localhost:4000', api)
 }

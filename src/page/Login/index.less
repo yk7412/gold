@@ -1,0 +1,40 @@
+@import '../../style/public.less';
+
+.login {
+    background-color: @lightGray;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .login-box {
+        width: 40%;
+        padding: 50px;
+        background-color: @defaultBackgroundColor;
+        border-radius: @defaultBorderRadius;
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            text-align: center;
+        }
+
+        .login-name, .login-password, .login-btn {
+            margin-top: 20px;
+        }
+        .login-btn {
+            width: 100%;
+        }
+        .login-register {
+            margin-top: 10px;
+            display: flex;
+            justify-content: end;
+
+            span {
+                color: @grey;
+                &:hover {
+                    color: @blue
+                }
+            }
+        }
+    }
+}

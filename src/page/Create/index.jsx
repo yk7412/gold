@@ -30,7 +30,7 @@ const Create = () => {
         if(text) {
             const params = {
                 title,
-                text,
+                content: text,
                 html
             }
             console.log(params)

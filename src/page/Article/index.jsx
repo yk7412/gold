@@ -15,18 +15,9 @@ const Article = () => {
     const [data, setData] = useState(<div></div>)
 
     useEffect(() => {
-        params.id && getArticleDetail({}).then(res => {
-            // res = {
-            //     code: 10000,
-            //     data: { title: '15个用于开发的高级TypeScript技巧', name: 'fisjifies', id: 1, like: 31, look: 381, reply: 829, time: '123', creator: 'fisifsi', content: '快来免费体验ChatGpt plus版本的，我们出的钱 体验地址:chat.waixingyun.cn 可以加入网站底部技术群，一起找bug，另外新版作图神器已上线 cube.waixingyun.cn/home' }
-            // }
+        params.id && getArticleDetail(params.id).then(res => {
             if(successCode.includes(res.code)) {
                 setTitle(res.data.title)
-                // console.log(res.data.html)
-                // debugger
-                // const a = JSON.parse(res.data.html)
-                    // debugger
-                // setData(JSON.parse(res.data.html))
                 setData(res.data.html)
                 const dom = document.querySelector('.article-content')
                 console.log(dom,'dom')
