@@ -9,7 +9,6 @@ HTTP.interceptors.request.use(config => {
     const token = Cookies.get('token')
     const userId = Cookies.get('userId')
     const newConfig = {...config, headers: {...config.headers, token: token, 'user-id': userId}}
-    console.log(newConfig,'newConfig')
     return newConfig
 })
 

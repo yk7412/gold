@@ -20,7 +20,6 @@ const Article = () => {
                 setTitle(res.data.title)
                 setData(res.data.html)
                 const dom = document.querySelector('.article-content')
-                console.log(dom,'dom')
                 if(dom) {
                     dom.innerHTML = res.data.html
                 }
@@ -33,7 +32,7 @@ const Article = () => {
     }, [params.id])
 
     return <div className="article pageBox rc-md-editor">
-        <div className="article-title">{title}</div>
+        <h2 className="article-title">{title}</h2>
         <div className="article-content custom-html-style"></div>
     </div>
 }

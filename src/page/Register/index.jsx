@@ -4,6 +4,7 @@ import { login, register } from '@/config/api'
 import { ERROR, successCode } from '@/config/name'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import Cookies from 'js-cookie'
 
 const Register = () => {
     const [form] = Form.useForm()
@@ -20,6 +21,9 @@ const Register = () => {
                     if(successCode.includes(registerRes.code)) {
                         const loginRes = await login(value)
                         if(successCode.includes(loginRes.code)) {
+                            Cookies.set('token', loginRes.data.token, { expires: 1 })
+                            Cookies.set('userName', loginRes.data.userName, { expires: 1 })
+                            Cookies.set('userId', loginRes.data.id, { expires: 1 })
                             navigate('/')
                         }else {
                             message.error(loginRes.msg || ERROR)

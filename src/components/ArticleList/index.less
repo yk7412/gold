@@ -36,11 +36,23 @@
                 }
                 .content {
                     color: @grey;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
                 }
             }
             footer {
-                .like, .reply {
-                    &:hover {
+
+                .left {
+                    >span {
+                        margin-right: 5px;
+                    }
+                    .like, .reply {
+                        &:hover {
+                            color: @blue
+                        }
+                    }
+                    .active {
                         color: @blue
                     }
                 }

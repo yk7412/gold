@@ -1,6 +1,7 @@
 import { List } from "antd"
 import {CommentOutlined, DislikeOutlined, EyeOutlined} from '@ant-design/icons'
 import moment from 'moment'
+import Cookies from "js-cookie"
 import './index.less'
 
 const ArticleList = ({
@@ -11,7 +12,6 @@ const ArticleList = ({
     onReply,
     ...otherProps
 }) => {
-    console.log(list,'list')
     const itemCallback = (item) => {
         onItem && onItem(item)
     }
@@ -36,7 +36,7 @@ const ArticleList = ({
             split={true}
             dataSource={list}
             renderItem={item => {
-                return <div className="item" onClick={() => itemCallback(item)} >
+                return <div id={item.id} key={item.id} className="item" onClick={() => itemCallback(item)} >
                     <header>
                         <span className="name" onClick={(event) => userCallback(item, event)}>{item.ownerName}</span>
                         <span className="divisionLine"></span>
@@ -44,12 +44,12 @@ const ArticleList = ({
                     </header>
                     <content>
                         <div className="title" title={item.title} >{item.title}</div>
-                        <div className="content">{item.content}</div>
+                        <div className="content">{typeof item.content === 'string' ? item.content.replace(/[#>`*-]/g, '') : item.content}</div>
                     </content>
                     <footer>
                         <div className="left">
                             <span><EyeOutlined /> {item.look}</span>
-                            <span className="like" onClick={(event) => likeCallback(item, event)} ><DislikeOutlined rotate='180' /> {item.like}</span>
+                            <span className={`like ${(item.likeIds || '')?.split(',')?.includes(Cookies.get('userId')) ? 'active' : ''}`} onClick={(event) => likeCallback(item, event)} ><DislikeOutlined rotate='180' /> {(typeof item.likeIds === 'string' && item.likeIds?.length > 0) &&item.likeIds.split(',')?.length}</span>
                             <span className="reply" onClick={(event) => replyCallback(item, event)} ><CommentOutlined /> {item.reply}</span>
                         </div>
                         <div className="right"></div>

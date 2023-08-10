@@ -5,13 +5,16 @@ import './index.less'
 import { getArticleList } from '@/config/api'
 import { useDispatch, useSelector } from 'react-redux'
 import { setArticleListReducer } from '@/redux/articleSlie'
+import jsCookie from 'js-cookie'
+import { useEffect, useState } from 'react'
 
 const Headers = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const userInfo = useSelector(state => state)
-    console.log(userInfo,'userInfo')
+    const [loginFlag, setLoginFlag] = useState(false)
+    const [pageFlag, setPageFlag] = useState(false)
 
     const menuOnChange = ({key}) => {
         navigate(key)
@@ -30,6 +33,17 @@ const Headers = () => {
         dispatch(setArticleListReducer(res.data))
     }
 
+    const onLoginCancel = () => {
+        jsCookie.remove('token')
+        jsCookie.remove('userName')
+        jsCookie.remove('userId')
+        setPageFlag(flag => !flag)
+    }
+
+    useEffect(() => {
+        setLoginFlag(Boolean(jsCookie.get('token')))
+    },[pageFlag, jsCookie.get('token')])
+
     return <div className="headers">
         <div className="logo"></div>
         <content>
@@ -38,15 +52,18 @@ const Headers = () => {
         <div className="search">
             <Input.Search onSearch={onSearch} />
         </div>
-        <div className="btn">
+        <div className={`btn ${loginFlag ? '' : 'displayNone'}`}>
             <Button type='primary' onClick={() => navigate('/article/create')} >写文章</Button>
         </div>
-        <div className="btn">
+        <div className={`btn ${loginFlag ? 'displayNone' : ''}`}>
             <Button style={{color: '#89919f', fontSize: '12px'}} size='small' type='link' onClick={() => navigate('/register')} >注册</Button>
             <Button size='small' onClick={() => navigate('/login')} >登录</Button>
         </div>
         <div className="user">
-            姓名
+            {jsCookie.get('userName')}
+            <Button className={`${loginFlag ? '' : 'displayNone'}`} type='link' size='small' onClick={onLoginCancel} >退出登录</Button>
+        </div>
+        <div className={`btn ${loginFlag ? '' : 'displayNone'}`}>
         </div>
     </div>
 }

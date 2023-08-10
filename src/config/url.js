@@ -6,6 +6,8 @@ const api = {
     getArticleDetail: '/article/detail',
     /** 新建文章 */
     getArticleCreate: '/article/create',
+    /** 文章点赞 */
+    articleLike: '/article/like',
     /** 注册 */
     register: '/user/register',
     /** 登录 */

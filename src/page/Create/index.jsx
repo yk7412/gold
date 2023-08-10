@@ -45,10 +45,15 @@ const Create = () => {
         }
     }
 
+    const onBackHome = () => {
+        navigate('/')
+    }
+
     return <div className="create">
         <div className="create-title">
             <Input placeholder='输入文章标题' size='large' value={title} onChange={event => setTitle(event.target.value)} />
             <Button size='large' onClick={onSubmit} >发布</Button>
+            <Button size='small' type='link' onClick={onBackHome} >返回首页</Button>
         </div>
         <MdEditor ref={node => mdEditor.current = node} style={{ height: '100%' }} renderHTML={text => mdParser.render(text)} onChange={editorChange} />
     </div>

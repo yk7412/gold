@@ -52,6 +52,25 @@ export const createArticle = async (params) => {
     }
 }
 
+/**
+ * 文章点赞
+ * @param {Object} params
+ * @param {String | Number} params.id id 文章id
+ * @returns {Promise<any>}
+*/
+export const articleLike = async (params) => {
+    try {
+        const res = await HTTP.post(url.api.articleLike, params)
+        return publicFn(res)
+    } catch (error) {
+        return {
+            code: 40000,
+            data: error,
+            msg: 'error'
+        }
+    }
+}
+
 /** 注册 */
 export const register = async (params) => {
     try {
