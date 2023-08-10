@@ -32,5 +32,5 @@ const publicFn = (baseUrl, obj) => {
 
 export default {
     tenapi: publicFn('https://tenapi.cn', tenapi),
-    api: publicFn('http://localhost:4000', api)
+    api: publicFn('http://139.84.134.223:4000', api)
 }
