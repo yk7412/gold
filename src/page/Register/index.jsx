@@ -38,7 +38,7 @@ const Register = () => {
                     <Input/>
                 </Form.Item>
                 <Form.Item className='register-password' name={'password'} label='密码' required={true}>
-                    <Input.Password/>
+                    <Input.Password onKeyDown={event => String(event.key) === 'Enter' && form.submit()} />
                 </Form.Item>
                 <Button className='register-btn' loading={btnLoading} onClick={() => form.submit()} >注册</Button>
                 <div className="register-login">

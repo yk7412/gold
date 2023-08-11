@@ -1,8 +1,9 @@
-import { List } from "antd"
+import { List, message } from "antd"
 import {CommentOutlined, DislikeOutlined, EyeOutlined} from '@ant-design/icons'
 import moment from 'moment'
 import Cookies from "js-cookie"
 import './index.less'
+import { useNavigate } from "react-router-dom"
 
 const ArticleList = ({
     list,
@@ -12,6 +13,7 @@ const ArticleList = ({
     onReply,
     ...otherProps
 }) => {
+    const navigate = useNavigate()
     const itemCallback = (item) => {
         onItem && onItem(item)
     }
@@ -21,7 +23,12 @@ const ArticleList = ({
     }
     const likeCallback = (item, event) => {
         event.stopPropagation()
-        onLike?.(item)
+        if(Cookies.get('token')) {
+            onLike?.(item)
+        }else {
+            message.error('请登录')
+            navigate('/login')
+        }
     }
     const replyCallback = (item, event) => {
         event.stopPropagation()

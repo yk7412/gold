@@ -12,9 +12,7 @@ const Headers = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const userInfo = useSelector(state => state)
     const [loginFlag, setLoginFlag] = useState(false)
-    const [pageFlag, setPageFlag] = useState(false)
 
     const menuOnChange = ({key}) => {
         navigate(key)
@@ -37,12 +35,12 @@ const Headers = () => {
         jsCookie.remove('token')
         jsCookie.remove('userName')
         jsCookie.remove('userId')
-        setPageFlag(flag => !flag)
+        document.location.reload()
     }
 
     useEffect(() => {
         setLoginFlag(Boolean(jsCookie.get('token')))
-    },[pageFlag, jsCookie.get('token')])
+    },[jsCookie.get('token')])
 
     return <div className="headers">
         <div className="logo"></div>
