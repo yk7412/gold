@@ -1,0 +1,67 @@
+@import '../../style/public.less';
+
+.operation {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    .operation-item {
+        display: inline-block;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.2s;
+        .operation-item-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            .operation-item-icon {
+                svg path {
+                    transition: all 0.2s;
+                    // fill: @hoverGrey
+                }
+            }
+            .operation-item-num {
+                color: #FFF;
+                background-color: @middleGrey;
+                border-radius: 10px;
+                position: absolute;
+                top: -20%;
+                right: -40%;
+                font-size: 12px;
+                padding: 2px 6px;
+                transition: all 0.2s;
+            }
+        }
+
+        
+    }
+    .operation-item:hover {
+        // background-color: red;
+        box-shadow: 4px 4px 2px#e5e5e5,
+        -1px -1px 1px #e5e5e5,
+        -1px 1px 1px #e5e5e5,
+        1px -1px 1px #e5e5e5,
+        ;
+    }
+
+    .operation-item:hover, .operation-item-active {
+        .operation-item-icon {
+            svg path {
+                fill: @blue;
+                // fill: red;
+            }
+        }
+        .operation-item-num {
+            background-color: @blue !important;
+
+        }
+    }
+}
+
+.operation-vertical {
+    flex-direction: column;
+}
